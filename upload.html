@@ -1,0 +1,160 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images | Ritik Mishra</title>
+    <link rel="stylesheet" href="./assets/css/upload.css">
+    <!-- Importing Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <!-- Importing Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
+    <!-- Importing Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Importing jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body style="background-color: rgba(245, 86, 81, .7);">
+    <section class="upload-section">
+        <div class="container mt-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 border p-4" id="mock-div">
+                    <div class="card-body">
+                        <h5 class="upload-title card-text float-left font-weight-bold">Upload Class Notes</h5>
+                        <div class="row mb-5 d-flex justify-content-center align-items-center">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <h6>Which date notes are you uploading?</h6>
+                                <input style="width: auto;" type="date" id="note-date" name="class-date" value="2022-06-27" min="2022-06-01"
+                                max="2023-06-01" />
+                                <h6>Which subject notes are you uploading?</h6>
+                                <select name="subject-select" id="select_sub">
+                                    <option value="gk">General Awareness (GK)</option>
+                                    <option value="maths">Quantitative Analysis (Maths)</option>
+                                    <option value="iq">Logical Reasoning (IQ)</option>
+                                    <option value="eng">Verbal Ability (English)</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <h6>Upload files</h6>
+                                <input id="fileUpload" type="file" multiple>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer-section" id="footer">
+        <div class="container" id="social-link-div">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h3>Get in Touch</h3>
+                    <a href="tel:+9779826859860"><i class="bi bi-telephone"></i> +977 9826859860</a>
+                    <br>
+                    <a href="mailto:riteekmishra708@gmail.com"><i class="bi bi-envelope"></i> riteekmishra708@gmail.com</a>
+                    <br>
+                    <a href="https://wa.me/message/FXWVHAMQQELCI1"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+                </div>
+                <div id="followLinks" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h3>Follow me on</h3>
+                    <a href="https://www.facebook.com/rithivk.misraw"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/thisisriteek/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UC8H0PviRrr-73VhekCu6hag/"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-section">
+            <p>© <a href="https://cmat.ritik.com.np">Ritik Mishra</a>. All Rights Reserved. Designed and developed by <a
+                    href="https://www.raunakmishra.com.np/">Raunak Kumar</a></p>
+        </div>
+    </section>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="module">
+    import { Octokit, App } from "https://cdn.skypack.dev/octokit";
+    $(document).ready(function(){
+        const octokit = new Octokit({
+            auth: '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'
+        });
+        
+        $('#fileUpload').change(function(){
+            var date = $('#note-date').val();
+            var sub = $('#select_sub').val();
+            var no_files = this.files.length;
+            for (var i=0; i < no_files; i++) {
+                image_upload(this.files[i], date, sub, i);
+            }
+            //alert("All files uploaded successfully...")
+        });
+
+        function image_upload(e, e_date, e_sub, n) {
+            var file = e;
+            var s_name = e_date + e_sub;
+            var file_name = e.name;
+            var dt = new Date();
+            var time = dt.getHours() + dt.getMinutes() + dt.getSeconds();
+            var f_name_split = file_name.split(".");
+            var name_len = f_name_split.length - 1;
+            var ext = f_name_split[name_len];
+            var reader = new FileReader();
+            if (ext == "png") {
+                reader.onloadend = function (e) {
+                    let data_url = e.target.result;
+                    data_url = data_url.replace('data:image/png;base64,', '');
+                    data_url = data_url.replace(/^.+,/, '');
+                    octokit.request('PUT /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + e_date + '/' + e_sub + '/' + s_name + time + n +'.'+ext, {
+                        owner: 'OWNER',
+                        repo: 'REPO',
+                        path: 'PATH',
+                        message: 'img_upload',
+                        committer: {
+                            name: 'Raunak Kumar',
+                            email: 'raunakraunak077@github.com'
+                        },
+                        content: data_url,
+                        sha: ''
+                    });
+                    alert('Successfully Uploaded: ' + file_name);
+                }
+                reader.readAsDataURL(file);
+            } else if (ext == "jpg" || ext == "jpeg") {
+                reader.onloadend = function (e) {
+                    let data_url = e.target.result;
+                    data_url = data_url.replace('data:image/jpeg;base64,', '');
+                    data_url = data_url.replace(/^.+,/, '');
+                    octokit.request('PUT /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + e_date + '/' + e_sub + '/' + s_name + time + n + '.' + ext, {
+                        owner: 'OWNER',
+                        repo: 'REPO',
+                        path: 'PATH',
+                        message: 'img_upload',
+                        committer: {
+                            name: 'Raunak Kumar',
+                            email: 'raunakraunak077@github.com'
+                        },
+                        content: data_url,
+                        sha: ''
+                    });
+                    alert('Successfully Uploaded: ' + file_name);
+                    //console.log(data_url);
+                }
+                reader.readAsDataURL(file);
+            } else {
+                alert("Please select a jpg/png type image...");
+            }
+        }
+    });
+</script>
+</html>

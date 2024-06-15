@@ -1,0 +1,584 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mocktest | Ritik Mishra</title>
+    <link rel="stylesheet" href="./assets/css/mocktest.css">
+    <!-- Importing Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <!-- Importing Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
+    <!-- Importing Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Importing jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body style="background-color: rgba(245, 86, 81, .7);">
+    <main>
+        <section class="mock-section">
+            <div class="container mt-5">
+                <h5 id="total-time" class="card-text font-weight-bold">Total Time: (<span id="time_hr">1</span>: <span id="time_min">30</span>: <span
+                        id="time_sec">00</span>)</h5>
+                <!-- First Page -->
+                <div class="row mb-5 d-flex justify-content-center">
+                    <div class="col-md-8 border p-4" id="mock-div">
+                        <div class="card-body">
+                            <h5 class="card-text float-left font-weight-bold">Mocktest: <span>31<sup>st</sup> July,
+                                    2022</span></h5>
+                            <h5 class="q-no">Q. No. <span id="number">0</span> of 100</h5>
+                        </div>
+                        <hr>
+                        <div class="start_page">
+                            <h3 class="text-center test-title mb-3">CMAT MockTest</h3>
+                            <p>You will get 1 point for each correct answer.<br> You'll have to attempt 100 questions, 25
+                                each of <span class="subject">GK, IQ, English and Maths</span> in a total of 90 minutes.</p>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <input type="text" value="" id="e_name" name="enter_name"
+                                            placeholder="Your Name" required>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <input type="number" value="" id="e_phone" name="enter_phone"
+                                            placeholder="Your Phone Number" required>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <input type="email" value="" id="e_email" name="enter_email"
+                                            placeholder="Your Email" required>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <button class="d-flex mx-auto mt-4" id="start-btn">
+                                            <h5>Start Test</h5>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Quiz Page -->
+                        <div id="main">
+                            <div class="card-body">
+                                <h5 class="card-text font-weight-bold" id="question" onmousedown="return false"
+                                    onselect="return false"></h5>
+                            </div>
+                            <div class="col-md-12 p-4" id="options">
+                                <button class="text-left option mt-4" id="option1"></button>
+                                <button class="text-left option mt-4" id="option2"></button>
+                                <button class="text-left option mt-4" id="option3"></button>
+                                <button class="text-left option mt-4" id="option4"></button>
+                            </div>
+                            <div class="question-switch p-4">
+                                <button class="btn btn-success float-left" id="prev">Previous</button>
+                                <button class="btn btn-success float-right" id="next">Next</button>
+                                <button class="btn btn-primary btn-lg mx-auto" id="finish">Finish</button>
+                            </div>
+                        </div>
+
+                        <!-- Result Page -->
+                        <div id="Result">
+                            <h3 class="mt-5 display-4">Marks: <span id="marks"></span>/25</h3>
+                            <h3 class="mt-4"><span id="correct-answer"></span> Correct out of 25</h3>
+                            <h3>Result: <span id="percentage"></span></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="answer_data">
+            <form id="hiddenForm"
+                action="https://script.google.com/macros/s/AKfycbzx9bxXAh4LhZCpZLFPmKVSid0ZG6vhJRyJgA-DSH8CTlKD9Od639OlJdeq14_q8Lq2Sw/exec"
+                method="post">
+                <input type="text" name="Name" value="" id="name">
+                <input type="text" name="Email" value="" id="email">
+                <input type="text" name="Phone" value="" id="phone">
+                <input type="text" value="" name="q1" id="qn1">
+                <input type="text" value="" name="q2" id="qn2">
+                <input type="text" value="" name="q3" id="qn3">
+                <input type="text" value="" name="q4" id="qn4">
+                <input type="text" value="" name="q5" id="qn5">
+                <input type="text" value="" name="q6" id="qn6">
+                <input type="text" value="" name="q7" id="qn7">
+                <input type="text" value="" name="q8" id="qn8">
+                <input type="text" value="" name="q9" id="qn9">
+                <input type="text" value="" name="q10" id="qn10">
+                <input type="text" value="" name="q11" id="qn11">
+                <input type="text" value="" name="q12" id="qn12">
+                <input type="text" value="" name="q13" id="qn13">
+                <input type="text" value="" name="q14" id="qn14">
+                <input type="text" value="" name="q15" id="qn15">
+                <input type="text" value="" name="q16" id="qn16">
+                <input type="text" value="" name="q17" id="qn17">
+                <input type="text" value="" name="q18" id="qn18">
+                <input type="text" value="" name="q19" id="qn19">
+                <input type="text" value="" name="q20" id="qn20">
+                <input type="text" value="" name="q21" id="qn21">
+                <input type="text" value="" name="q22" id="qn22">
+                <input type="text" value="" name="q23" id="qn23">
+                <input type="text" value="" name="q24" id="qn24">
+                <input type="text" value="" name="q25" id="qn25">
+                <input type="text" value="" name="q26" id="qn26">
+                <input type="text" value="" name="q27" id="qn27">
+                <input type="text" value="" name="q28" id="qn28">
+                <input type="text" value="" name="q29" id="qn29">
+                <input type="text" value="" name="q30" id="qn30">
+                <input type="text" value="" name="q31" id="qn31">
+                <input type="text" value="" name="q32" id="qn32">
+                <input type="text" value="" name="q33" id="qn33">
+                <input type="text" value="" name="q34" id="qn34">
+                <input type="text" value="" name="q35" id="qn35">
+                <input type="text" value="" name="q36" id="qn36">
+                <input type="text" value="" name="q37" id="qn37">
+                <input type="text" value="" name="q38" id="qn38">
+                <input type="text" value="" name="q39" id="qn39">
+                <input type="text" value="" name="q40" id="qn40">
+                <input type="text" value="" name="q41" id="qn41">
+                <input type="text" value="" name="q42" id="qn42">
+                <input type="text" value="" name="q43" id="qn43">
+                <input type="text" value="" name="q44" id="qn44">
+                <input type="text" value="" name="q45" id="qn45">
+                <input type="text" value="" name="q46" id="qn46">
+                <input type="text" value="" name="q47" id="qn47">
+                <input type="text" value="" name="q48" id="qn48">
+                <input type="text" value="" name="q49" id="qn49">
+                <input type="text" value="" name="q50" id="qn50">
+                <input type="text" value="" name="q51" id="qn51">
+                <input type="text" value="" name="q52" id="qn52">
+                <input type="text" value="" name="q53" id="qn53">
+                <input type="text" value="" name="q54" id="qn54">
+                <input type="text" value="" name="q55" id="qn55">
+                <input type="text" value="" name="q56" id="qn56">
+                <input type="text" value="" name="q57" id="qn57">
+                <input type="text" value="" name="q58" id="qn58">
+                <input type="text" value="" name="q59" id="qn59">
+                <input type="text" value="" name="q60" id="qn60">
+                <input type="text" value="" name="q61" id="qn61">
+                <input type="text" value="" name="q62" id="qn62">
+                <input type="text" value="" name="q63" id="qn63">
+                <input type="text" value="" name="q64" id="qn64">
+                <input type="text" value="" name="q65" id="qn65">
+                <input type="text" value="" name="q66" id="qn66">
+                <input type="text" value="" name="q67" id="qn67">
+                <input type="text" value="" name="q68" id="qn68">
+                <input type="text" value="" name="q69" id="qn69">
+                <input type="text" value="" name="q70" id="qn70">
+                <input type="text" value="" name="q71" id="qn71">
+                <input type="text" value="" name="q72" id="qn72">
+                <input type="text" value="" name="q73" id="qn73">
+                <input type="text" value="" name="q74" id="qn74">
+                <input type="text" value="" name="q75" id="qn75">
+                <input type="text" value="" name="q76" id="qn76">
+                <input type="text" value="" name="q77" id="qn77">
+                <input type="text" value="" name="q78" id="qn78">
+                <input type="text" value="" name="q79" id="qn79">
+                <input type="text" value="" name="q80" id="qn80">
+                <input type="text" value="" name="q81" id="qn81">
+                <input type="text" value="" name="q82" id="qn82">
+                <input type="text" value="" name="q83" id="qn83">
+                <input type="text" value="" name="q84" id="qn84">
+                <input type="text" value="" name="q85" id="qn85">
+                <input type="text" value="" name="q86" id="qn86">
+                <input type="text" value="" name="q87" id="qn87">
+                <input type="text" value="" name="q88" id="qn88">
+                <input type="text" value="" name="q89" id="qn89">
+                <input type="text" value="" name="q90" id="qn90">
+                <input type="text" value="" name="q91" id="qn91">
+                <input type="text" value="" name="q92" id="qn92">
+                <input type="text" value="" name="q93" id="qn93">
+                <input type="text" value="" name="q94" id="qn94">
+                <input type="text" value="" name="q95" id="qn95">
+                <input type="text" value="" name="q96" id="qn96">
+                <input type="text" value="" name="q97" id="qn97">
+                <input type="text" value="" name="q98" id="qn98">
+                <input type="text" value="" name="q99" id="qn99">
+                <input type="text" value="" name="q100" id="qn100">
+                <input type="text" value="" name="score" id="score">
+            </form>
+        </section>
+        <section id="countdown-timer">
+            <h3>The test will start sharp at 9 A.M., 31<sup>st</sup> July, 2022.</h3>
+            <h5>Remaining Time:</h5>
+            <h5 id="remaining-countdown"></h5>
+        </section>
+        <section class="footer-section" id="footer">
+            <div class="container" id="social-link-div">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h3>Get in Touch</h3>
+                        <a href="tel:+9779826859860"><i class="bi bi-telephone"></i> +977 9826859860</a>
+                        <br>
+                        <a href="mailto:riteekmishra708@gmail.com"><i class="bi bi-envelope"></i>
+                            riteekmishra708@gmail.com</a>
+                        <br>
+                        <a href="https://wa.me/message/FXWVHAMQQELCI1"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+                    </div>
+                    <div id="followLinks" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h3>Follow me on</h3>
+                        <a href="https://www.facebook.com/rithivk.misraw"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/thisisriteek/"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UC8H0PviRrr-73VhekCu6hag/"><i
+                                class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-section">
+                <p>© <a href="https://cmat.ritik.com.np">Ritik Mishra</a>. All Rights Reserved. Designed and developed
+                    by <a href="https://www.raunakmishra.com.np/">Raunak Kumar</a></p>
+            </div>
+        </section>
+    </main>
+    <script>
+        var count = 0;
+        var marks = 0;
+        var answer = [];
+        var selection = {
+            "q1": "",
+            "q2": "",
+            "q3": "",
+            "q4": "",
+            "q5": "",
+            "q6": "",
+            "q7": "",
+            "q8": "",
+            "q9": "",
+            "q10": "",
+            "q11": "",
+            "q12": "",
+            "q13": "",
+            "q14": "",
+            "q15": "",
+            "q16": "",
+            "q17": "",
+            "q18": "",
+            "q19": "",
+            "q20": "",
+            "q21": "",
+            "q22": "",
+            "q23": "",
+            "q24": "",
+            "q25": "",
+            "q26": "",
+            "q27": "",
+            "q28": "",
+            "q29": "",
+            "q30": "",
+            "q31": "",
+            "q32": "",
+            "q33": "",
+            "q34": "",
+            "q35": "",
+            "q36": "",
+            "q37": "",
+            "q38": "",
+            "q39": "",
+            "q40": "",
+            "q41": "",
+            "q42": "",
+            "q43": "",
+            "q44": "",
+            "q45": "",
+            "q46": "",
+            "q47": "",
+            "q48": "",
+            "q49": "",
+            "q50": "",
+            "q51": "",
+            "q52": "",
+            "q53": "",
+            "q54": "",
+            "q55": "",
+            "q56": "",
+            "q57": "",
+            "q58": "",
+            "q59": "",
+            "q60": "",
+            "q61": "",
+            "q62": "",
+            "q63": "",
+            "q64": "",
+            "q65": "",
+            "q66": "",
+            "q67": "",
+            "q68": "",
+            "q69": "",
+            "q70": "",
+            "q71": "",
+            "q72": "",
+            "q73": "",
+            "q74": "",
+            "q75": "",
+            "q76": "",
+            "q77": "",
+            "q78": "",
+            "q79": "",
+            "q80": "",
+            "q81": "",
+            "q82": "",
+            "q83": "",
+            "q84": "",
+            "q85": "",
+            "q86": "",
+            "q87": "",
+            "q88": "",
+            "q89": "",
+            "q90": "",
+            "q91": "",
+            "q92": "",
+            "q93": "",
+            "q94": "",
+            "q95": "",
+            "q96": "",
+            "q97": "",
+            "q98": "",
+            "q99": "",
+            "q100": ""
+        };
+        var countdown;
+        var countDownDate = new Date("July 31, 2022 09:00:00").getTime();
+
+        $(document).bind("contextmenu", function (e) {
+            return false;
+        });
+
+        $(document).ready(function () {
+            $('#finish').hide();
+            $('#Result').hide();
+            $('#main').hide();
+            $(".q-no").hide();
+            buttons_manager();
+
+            var x = setInterval(function () {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                document.getElementById("remaining-countdown").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+
+                $('.mock-section').hide();
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    $('.mock-section').show();
+                    $('#countdown-timer').hide();
+                }
+            }, 1000);
+
+            //Get JSON Questions
+            $('#start-btn').click(function () {
+                if ($('#e_name').val() == "") {
+                    alert("Please enter your name.");
+                } else if ($('#e_email').val() == "") {
+                    alert("Please enter your email.");
+                } else if ($('#e_phone').val() == "") {
+                    alert("Please enter your phone number.");
+                } else {
+                    $('#main').show();
+                    $(".q-no").show();
+                    $.ajax({
+                        dataType: "json",
+                        beforeSend: function (request) {
+                            request.setRequestHeader("Security-key", "1945");
+                        },
+                        url: "https://json.extendsclass.com/bin/b0aadc980cdb",
+                        success: function (data) {
+                            adding_Questions(data.Mocktest, count);
+                        }
+                    });
+                    $('.start_page').hide();
+
+                    //Get Personal Details
+                    $('#name').val($('#e_name').val());
+                    $('#email').val($('#e_email').val());
+                    $('#phone').val($('#e_phone').val());
+                    //console.log($('#e_name').val());
+                    //console.log($('#e_email').val());
+                    //console.log($('#e_phone').val());
+
+                    var start_time = new Date().getTime();
+                    var t_time = start_time + 5400000;
+                    var countdown = setInterval(function () {
+                        var now_time = new Date().getTime();
+
+                        e_time = t_time - now_time;
+                        var hours = Math.floor((e_time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var seconds = Math.floor((e_time % (1000 * 60)) / 1000);
+                        var minutes = Math.floor((e_time % (1000 * 60 * 60)) / (1000 * 60));
+                        $('#time_sec').text(seconds);
+                        $('#time_min').text(minutes);
+                        $('#time_hr').text(hours);
+                        if (e_time < 0) {
+                            clearInterval(countdown);
+                            $("#hiddenForm").submit();
+                            alert("Time Finished");
+                            $('#main').hide();
+                        }
+                    }, 1000);
+                    //alert(t_time);
+
+                    //start_time = new Date().getTime();
+
+                    //timer = setInterval(timer_function, 1000);
+                }
+            });
+
+            //Answer Option Click
+            $('.option').click(function () {
+                q = count + 1;
+                $(this).addClass("active");
+                $(this).siblings().removeClass("active");
+                q_no = "q" + q;
+                selected_option = $(this).attr('id');
+                selection[q_no] = selected_option;
+                $('#qn' + q).val($(this).attr('id'));
+            });
+
+            //Next Button Click
+            $('#next').click(function () {
+                count++;
+                $.ajax({
+                    dataType: "json",
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Security-key", "1945");
+                    },
+                    url: "https://json.extendsclass.com/bin/b0aadc980cdb",
+                    success: function (data) {
+                        adding_Questions(data.Mocktest, count);
+                    }
+                });
+                //console.log(selection);
+                $('#prev').show();
+                $('.option').removeClass("active");
+                buttons_manager();
+                selected_Answer();
+                console.log($('#qn' + count).val());
+                //result_storage();
+                //console.log(selection)
+            });
+
+            //Previous Button Click
+            $('#prev').click(function () {
+                count--;
+                $.ajax({
+                    dataType: "json",
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Security-key", "1945");
+                    },
+                    url: "https://json.extendsclass.com/bin/b0aadc980cdb",
+                    success: function (data) {
+                        adding_Questions(data.Mocktest, count);
+                    }
+                });
+                $('.option').removeClass("active");
+                $('#finish').hide();
+                buttons_manager();
+                selected_Answer();
+            });
+
+            //Finish Button Click
+            $('#finish').click(function () {
+                //creating_Results(data);
+                clearInterval(countdown);
+                //check_answer();
+                $("#hiddenForm").submit();
+            });
+
+            function check_answer() {
+                var score = 0;
+                $.ajax({
+                    dataType: "json",
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Security-key", "1945");
+                    },
+                    url: "https://json.extendsclass.com/bin/b0aadc980cdb",
+                    success: function (data) {
+                        for (var b = 0; b < 25; b++) {
+                            c = b + 1;
+                            selected = $("#q" + c).attr('id');
+                            correct = data[0].opc;
+                            if (selected == correct) {
+                                score = score + 1;
+                            }
+                            return score;
+                            alert(score);
+                        }
+                        $('#score').val(score);
+                    }
+                });
+            }
+
+            //Buttons Manager Function
+            function buttons_manager() {
+                if (count > 0) {
+                    $('#prev').show();
+                    if (count == 99) {
+                        $('#next').hide();
+                        $('#finish').show();
+                    } else {
+                        $('#next').show();
+                    }
+                } else {
+                    $('#prev').hide();
+                }
+            }
+
+            //Adding Questions Function
+            function adding_Questions(data, i) {
+                $('#question').text(data[i].Questions);
+                $('#option1').text(data[i].option1);
+                $('#option2').text(data[i].option2);
+                $('#option3').text(data[i].option3);
+                $('#option4').text(data[i].option4);
+                $('#number').text(Number(i + 1));
+                correct_answer = data[i].opc;
+                //console.log(data[i].Question, data[i].option1, data[i].option2, data[i].option3, data[i].option4)
+            }
+
+            //Answer Selection Function
+            function selected_Answer() {
+                for (var i = 0; i < 4; i++) {
+                    var a = document.getElementById("options").children;
+                    if (a[i].innerHTML == answer[count]) {
+                        $('#options').children("button")[i].classList.add("active");
+                    } else {
+                        $('#options').children("button")[i].classList.remove("active");
+                    }
+                }
+            }
+
+            /* Create Results Function
+            function creating_Results(data){
+                for(var i=0; i<answer.length; i++){
+                    marks += 1;
+                }
+                $("#marks").text(marks);
+                $("#correct-answer").text(marks);
+                $("#correct-answer").text(marks*4 + "%")
+            } */
+        });
+        /* b2e29f302f26, 7aa9706aba7e */
+    </script>
+</body>
+</html>

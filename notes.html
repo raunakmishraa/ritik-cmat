@@ -1,0 +1,372 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes | Ritik Mishra</title>
+    <link rel="stylesheet" href="./assets/css/notes.css">
+    <!-- Importing Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <!-- Importing Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
+    <!-- Importing Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Importing jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body style="background-color: rgba(245, 86, 81, .7);">
+    <main>
+        <section class="p-4 choice-section">
+            <div class="p-4 border choice-div">
+                <h3>Do you want to upload notes or get notes?</h3>
+                <button id="choice-upload">Upload Notes</button>
+                <button id="choice-get">Get Notes</button>
+            </div>
+        </section>
+        <section class="p-4 upload-section">
+            <div class="container p-4 border upload-div">
+                <div class="row">
+                    <h5 class="upload-title card-text font-weight-bold">Upload Class Notes</h5>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <h6 class="mt-3">Which date notes are you uploading?</h6>
+                        <input style="width: auto;" type="date" id="note-date" name="class-date" value="2022-06-27"
+                            min="2022-06-01" max="2023-06-01" />
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <h6 class="mt-3">Which subject notes are you uploading?</h6>
+                        <select name="subject-select" id="select_sub" required>
+                            <option value="gk">General Awareness (GK)</option>
+                            <option value="maths">Quantitative Analysis (Maths)</option>
+                            <option value="iq">Logical Reasoning (IQ)</option>
+                            <option value="eng">Verbal Ability (English)</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h6 class="mt-3">Any Additional Comments?</h6>
+                        <textarea id="commentText" rows="5" type="text" value=""
+                            placeholder="Please provide if you have any additional information about the note like chapter name, topic, or something else to say..."></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <h6 class="mt-3">Upload files</h6>
+                    <input id="fileUpload" type="file" multiple>
+                </div>
+            </div>
+        </section>
+        <section class="p-4 get-section">
+            <div class="container p-4 border get-div">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <h6 class="mt-3">Which subject notes are you searching for?</h6>
+                        <select name="subject-select" id="select_sub" required>
+                            <option value="gk">General Awareness (GK)</option>
+                            <option value="maths">Quantitative Analysis (Maths)</option>
+                            <option value="iq">Logical Reasoning (IQ)</option>
+                            <option value="eng">Verbal Ability (English)</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <h6 class="mt-3">Which date notes are you searching for?</h6>
+                        <input style="width: auto;" type="date" id="note-date" name="class-date" value="2022-06-27" min="2022-06-01"
+                            max="2023-06-01" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h6 class="mt-3">Any Additional Information?</h6>
+                        <textarea id="commentText" rows="6" type="text" value=""
+                            placeholder="If you're looking for specific notes of any chapter or topic, you can provide informatiion about it here..."></textarea>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <button id="notes-search">Search Notes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="p-4 gallery-section">
+            <img src="" id="profile_img" alt="">
+        </section>
+        <section class="footer-section" id="footer">
+            <div class="container" id="social-link-div">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h3>Get in Touch</h3>
+                        <a href="tel:+9779826859860"><i class="bi bi-telephone"></i> +977 9826859860</a>
+                        <br>
+                        <a href="mailto:riteekmishra708@gmail.com"><i class="bi bi-envelope"></i>
+                            riteekmishra708@gmail.com</a>
+                        <br>
+                        <a href="https://wa.me/message/FXWVHAMQQELCI1"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+                    </div>
+                    <div id="followLinks" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h3>Follow me on</h3>
+                        <a href="https://www.facebook.com/rithivk.misraw"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/thisisriteek/"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UC8H0PviRrr-73VhekCu6hag/"><i
+                                class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-section">
+                <p>© <a href="https://cmat.ritik.com.np">Ritik Mishra</a>. All Rights Reserved. Designed and developed by <a
+                        href="https://www.raunakmishra.com.np/">Raunak Kumar</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="module">
+    import { Octokit, App } from "https://cdn.skypack.dev/octokit";
+    $(document).ready(function(){
+        $('.upload-section').hide();
+        $('.get-section').hide();
+        $('#choice-upload').click(function(){
+            $('.choice-section').hide();
+            $('.upload-section').show();
+            $('.get-section').hide();
+            $('.gallery-section').hide();
+        });
+        $('#choice-get').click(function(){
+            $('.choice-section').hide();
+            $('.upload-section').hide();
+            $('.get-section').show();
+            $('.gallery-section').hide();
+        });
+        $('#notes-search').click(function(){
+            $('.choice-section').hide();
+            $('.upload-section').hide();
+            $('.get-section').hide();
+            $('.gallery-section').show();
+            var subject = $('#select_sub').val();
+            get_image(subject);
+        });
+        $('#fileUpload').change(function () {
+            var date = $('#note-date').val();
+            var sub = $('#select_sub').val();
+            var comment = $('#commentText').val();
+            var no_files = this.files.length;
+            for (var i = 0; i < no_files; i++) {
+                image_upload(this.files[i], date, sub, comment, i);
+            }
+            //alert("All files uploaded successfully...")
+        });
+        
+        const octokit = new Octokit({
+            auth: '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'
+        });
+
+        function image_upload(e, e_date, e_sub, e_comment, n) {
+            var file = e;
+            var folder_name = e_sub;
+            var file_name = e.name;
+            var url_encoded_file_name = file_name.split(" ").join("");
+            console.log(url_encoded_file_name);
+            var f_name_split = file_name.split(".");
+            var name_len = f_name_split.length - 1;
+            var ext = f_name_split[name_len];
+            var commit_comment = 'date='+e_date+'&commentText='+e_comment;
+            var reader = new FileReader();
+            if (ext == "png") {
+                reader.onloadend = function (e) {
+                    let data_url = e.target.result;
+                    data_url = data_url.replace('data:image/png;base64,', '');
+                    data_url = data_url.replace(/^.+,/, '');
+                    octokit.request('PUT /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + folder_name + '/' + url_encoded_file_name, {
+                        owner: 'OWNER',
+                        repo: 'REPO',
+                        path: 'PATH',
+                        message: commit_comment,
+                        committer: {
+                            name: 'Raunak Kumar',
+                            email: 'raunakraunak077@gmail.com'
+                        },
+                        content: data_url,
+                        sha: ''
+                    });
+                    alert('Successfully Uploaded: ' + file_name);
+                }
+                reader.readAsDataURL(file);
+            } else if (ext == "jpg" || ext == "jpeg") {
+                reader.onloadend = function (e) {
+                    let data_url = e.target.result;
+                    data_url = data_url.replace('data:image/jpeg;base64,', '');
+                    data_url = data_url.replace(/^.+,/, '');
+                    octokit.request('PUT /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + folder_name + '/' + url_encoded_file_name, {
+                        owner: 'OWNER',
+                        repo: 'REPO',
+                        path: 'PATH',
+                        message: commit_comment,
+                        committer: {
+                            name: 'Raunak Kumar',
+                            email: 'raunakraunak077@gmail.com'
+                        },
+                        content: data_url,
+                        sha: ''
+                    });
+                    alert('Successfully Uploaded: ' + file_name);
+                    //console.log(data_url);
+                }
+                reader.readAsDataURL(file);
+            } else {
+                alert("Please select a jpg/png type image...");
+            }
+        }
+
+        function get_image(sub) {
+            octokit.request('GET /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/'+sub+'/', {
+                owner: 'OWNER',
+                repo: 'REPO',
+                path: 'PATH'
+            }).then(function(response){
+                var no_of_files = response.data.length;
+                for (var a=0; a < no_of_files; a++) {
+                    var img_name = response.data[a].name;
+                    var img_name_split = img_name.split(".");
+                    var img_name_len = img_name_split.length - 1;
+                    var img_ext = img_name_split[img_name_len];
+                    octokit.request('GET /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + sub + '/' + img_name, {
+                        owner: 'OWNER',
+                        repo: 'REPO',
+                        path: 'PATH'
+                    }).then(function(response1){
+                        var base64 = response1.data.content;
+                        if (img_ext == "png"){
+                            var dataurl = 'data:image/png;base64,' + base64;
+                            $('#profile_img').attr('src', dataurl);
+                            console.log(dataurl);
+                        } else if (img_ext == "jpeg" || img_ext == "jpg") {
+                            var dataurl = 'data:image/jpeg;base64,' + base64;
+                            $('#profile_img').attr('src', dataurl);
+                            console.log(dataurl);
+                        } else {
+                            alert("Some error occurred. Please refresh the page and try again !!")
+                        }
+                    });
+                }
+            });
+        }
+
+
+        /* octokit.request('GET /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/', {
+            owner: 'OWNER',
+            repo: 'REPO',
+            path: 'PATH'
+        }).then(function(response){
+            //console.log(response);
+            var dir1 = response.data[0].name;
+            octokit.request('GET /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/'+ dir1 + '/', {
+                owner: 'OWNER',
+                repo: 'REPO',
+                path: 'PATH'
+            }).then(function(response1){
+                var dir2 = response1.data[0].name;
+                octokit.request('GET /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + dir1 + '/' + dir2 + '/', {
+                    owner: 'OWNER',
+                    repo: 'REPO',
+                    path: 'PATH'
+                }).then(function(response2){
+                    var img_name = response2.data[0].name;
+                    octokit.request('GET /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + dir1 + '/' + dir2 + '/' + img_name, {
+                        owner: 'OWNER',
+                        repo: 'REPO',
+                        path: 'PATH'
+                    }).then(function(response3){
+                        //var base64 = response3.data.content;
+                        var base64 = 'data:image/jpeg;base64,'+ response3.data.content;
+                        //var image = new Image();
+                        //image.src = base64;
+                        $('#profile_img').attr('src', base64);
+                        //document.body.appendChild(image);
+                        console.log(base64)
+                    });
+                    //var img_url = "https://github.com/Raunakkumarr/images-database/blob/main/cmat-classes/assets/images/" + dir1 + "/" + dir2 + "/" + img_name;
+                });
+            });
+        });
+
+
+        //console.log(getFile);
+        
+        $('#fileUpload').change(function(){
+            var date = $('#note-date').val();
+            var sub = $('#select_sub').val();
+            var no_files = this.files.length;
+            for (var i=0; i < no_files; i++) {
+                image_upload(this.files[i], date, sub, i);
+            }
+            //alert("All files uploaded successfully...")
+        });
+
+        function image_upload(e, e_date, e_sub, n) {
+            var file = e;
+            var s_name = e_date + e_sub;
+            var file_name = e.name;
+            var dt = new Date();
+            var time = dt.getHours() + dt.getMinutes() + dt.getSeconds();
+            var f_name_split = file_name.split(".");
+            var name_len = f_name_split.length - 1;
+            var ext = f_name_split[name_len];
+            var reader = new FileReader();
+            if (ext == "png") {
+                reader.onloadend = function (e) {
+                    let data_url = e.target.result;
+                    data_url = data_url.replace('data:image/png;base64,', '');
+                    data_url = data_url.replace(/^.+,/, '');
+                    octokit.request('PUT /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + e_date + '/' + e_sub + '/' + s_name + time + n +'.'+ext, {
+                        owner: 'OWNER',
+                        repo: 'REPO',
+                        path: 'PATH',
+                        message: 'img_upload',
+                        committer: {
+                            name: 'Raunak Kumar',
+                            email: 'raunakraunak077@github.com'
+                        },
+                        content: data_url,
+                        sha: ''
+                    });
+                    alert('Successfully Uploaded: ' + file_name);
+                }
+                reader.readAsDataURL(file);
+            } else if (ext == "jpg" || ext == "jpeg") {
+                reader.onloadend = function (e) {
+                    let data_url = e.target.result;
+                    data_url = data_url.replace('data:image/jpeg;base64,', '');
+                    data_url = data_url.replace(/^.+,/, '');
+                    octokit.request('PUT /repos/Raunakkumarr/images-database/contents/cmat-classes/assets/images/' + e_date + '/' + e_sub + '/' + s_name + time + n + '.' + ext, {
+                        owner: 'OWNER',
+                        repo: 'REPO',
+                        path: 'PATH',
+                        message: 'img_upload',
+                        committer: {
+                            name: 'Raunak Kumar',
+                            email: 'raunakraunak077@github.com'
+                        },
+                        content: data_url,
+                        sha: ''
+                    });
+                    alert('Successfully Uploaded: ' + file_name);
+                    //console.log(data_url);
+                }
+                reader.readAsDataURL(file);
+            } else {
+                alert("Please select a jpg/png type image...");
+            }
+        } */
+    });
+</script>
+</html>
